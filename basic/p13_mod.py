@@ -35,9 +35,9 @@ class Person :
         ''' % (self.name, self.age, self.weight)
 
 # 객체 생성
-obj = Person('컴퓨터', 1, 2)
-print(obj)
-obj.eat('피자')
+# obj = Person('컴퓨터', 1, 2)
+# print(obj)
+# obj.eat('피자')
 
 # 상속
 # 부모의 모든 것을 가지고, 재정의할 수 있고, 추가할 수 있다
@@ -59,7 +59,20 @@ class Xman(Person) :
         super().__init__(name, age, weight)
         self.abil = abil
 
-mu = Xman('파이썬', 200, 100, 103)
-mu.speed()
-mu.eat('피자')
-print(mu)
+# mu = Xman('파이썬', 200, 100, 103)
+# mu.speed()
+# mu.eat('피자')
+# print(mu)
+# print('p13_mod : __name__', __name__)
+
+# 테스트 코드는 특정 조건을 만족할 때만 수행되게 구성
+if __name__ == '__main__' :
+    obj = Person('컴퓨터', 1, 2)
+    print(obj)
+    obj.eat('피자')
+
+    mu = Xman('파이썬', 200, 100, 103)
+    mu.speed()
+    mu.eat('피자')
+    print(mu)
+    print('p13_mod : __name__', __name__)

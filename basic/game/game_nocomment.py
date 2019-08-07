@@ -28,14 +28,11 @@ game_msg = {
 }
 
 game_title = input(game_msg['INPUT_TITLE'])
-
 while True :
     if len(game_title) > 28 : 
         game_title = input(game_msg['INPUT_TITLE_ERR_OUTOFBOUND'] .format(game_title, len(game_title)))
-        pass
     elif not game_title : 
         game_title = input(game_msg['INPUT_TITLE_ERR_NULL'])
-        pass
     else : 
         print('[{}]'.format(game_title))   
         break    
@@ -48,7 +45,6 @@ print('='*cell_amt)
 
 gamer_name = input(game_msg['INPUT_NAME'])
 nameCheck = True  
-
 while nameCheck :
     if not gamer_name :
         gamer_name = input(game_msg['INPUT_NAME_ERR_NULL'])
@@ -68,13 +64,13 @@ while True :
 
     while True :
         if not gamer_num :  
-            gamer_num = input(game_msg['INPUT_NUM_ERR_NULL'])
+            gamer_num = input(game_msg['INPUT_NUM_ERR_NULL']).strip()
             continue
         elif not gamer_num.isnumeric() :    
-            gamer_num = input(game_msg['INPUT_NUM_ERR_NOTNUM'])
+            gamer_num = input(game_msg['INPUT_NUM_ERR_NOTNUM']).strip()
             continue
         elif int(gamer_num) <0 or int(gamer_num) > 99 : 
-            gamer_num = input(game_msg['INPUT_NUM_ERR_OUTOFBOUND'])
+            gamer_num = input(game_msg['INPUT_NUM_ERR_OUTOFBOUND']).strip()
             continue
         else :     
             tryCnt = tryCnt+1
@@ -91,9 +87,9 @@ while True :
                     break
 
 
-    reTry = input(game_msg['ASK_RETRY'])
+    reTry = input(game_msg['ASK_RETRY']).strip()
     while reTry not in ('yes', 'no') :
-        reTry = input(game_msg['INPUT_RETRY_ERR_NOTYESORNO'])
+        reTry = input(game_msg['INPUT_RETRY_ERR_NOTYESORNO']).strip()
     if reTry == 'no' :
         print(game_msg['GAMEOVER_MSG'])
         break

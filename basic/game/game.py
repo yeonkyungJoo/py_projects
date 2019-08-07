@@ -35,14 +35,11 @@ game_msg = {
 }
 
 game_title = input(game_msg['INPUT_TITLE'])
-
 while True :
     if len(game_title) > 28 : # 28자 초과입력한 경우
         game_title = input(game_msg['INPUT_TITLE_ERR_OUTOFBOUND'] .format(game_title, len(game_title)))
-        pass
     elif not game_title : # 아무것도 입력하지 않은 경우
         game_title = input(game_msg['INPUT_TITLE_ERR_NULL'])
-        pass
     else : # 정상 입력
         print('[{}]'.format(game_title))   # print('[%s]' % game_title)
         break    # 반복문 종료
@@ -73,7 +70,6 @@ print('='*cell_amt)
 
 gamer_name = input(game_msg['INPUT_NAME'])
 nameCheck = True  # flag 변수 : 상황을 통제/구분하는 변수
-
 while nameCheck :
     if not gamer_name :
         gamer_name = input(game_msg['INPUT_NAME_ERR_NULL'])
@@ -111,13 +107,13 @@ while True :
 
     while True :
         if not gamer_num :  
-            gamer_num = input(game_msg['INPUT_NUM_ERR_NULL'])
+            gamer_num = input(game_msg['INPUT_NUM_ERR_NULL']).strip()
             continue
         elif not gamer_num.isnumeric() :    # False인 값은 정수값이 될 수 없다 -> 정수가 아니다
-            gamer_num = input(game_msg['INPUT_NUM_ERR_NOTNUM'])
+            gamer_num = input(game_msg['INPUT_NUM_ERR_NOTNUM']).strip()
             continue
         elif int(gamer_num) <0 or int(gamer_num) > 99 :  # 범위를 넘은 경우
-            gamer_num = input(game_msg['INPUT_NUM_ERR_OUTOFBOUND'])
+            gamer_num = input(game_msg['INPUT_NUM_ERR_OUTOFBOUND']).strip()
             continue
         else :      # 정상 입력
             tryCnt = tryCnt+1
@@ -139,9 +135,9 @@ while True :
     # no => 'game over !! bye bye~'
     # yes => 본게임 시작 으로 이동하여 진행
 
-    reTry = input(game_msg['ASK_RETRY'])
+    reTry = input(game_msg['ASK_RETRY']).strip()
     while reTry not in ('yes', 'no') :
-        reTry = input(game_msg['INPUT_RETRY_ERR_NOTYESORNO'])
+        reTry = input(game_msg['INPUT_RETRY_ERR_NOTYESORNO']).strip()
     if reTry == 'no' :
         print(game_msg['GAMEOVER_MSG'])
         break
