@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <fieldset>
+            <h2>언어감지 <span id = 'lang_detect'></span></h2>
+            <textarea id = 'input' row = '20' cols = '50' name = 'inputLang'></textarea>
+            <br>
+            <button onclick = 'javascript:onLangTypeDetect();'>언어감지하기</button>
+            <button onclick = 'onLangTranslate();'>번역하기</button>
+        </fieldset>
+        <script>
+            function onLangTypeDetect() {
+                // 언어감지하기 : 모델을 이용하여 예측 → 답안 구성
+
+                // 클라이언트 : 입력값 획득 → (보안이 중요한 것은 아니지만 데이터 양이 많으므로) post
+                // 1. 언어 종류를 감지하고자 하는 입력값 획득
+                let inputData = $('#input').val()
+                console.log(inputData)
+                // 2. post로 데이터 전송
+                $.post({
+                    url : '/devgo',
+                    data : `inputLang=${inputData}`,
+                    dataType : 'json',
+                    success : ( data )=>{
+                        console.log('Success', data)
+                    },
+                    error : ( err ) => {
+                        console.log('Error', err)
+                    }
+                })
+
+                // 서버(run.py) : 데이터를 획득 → 벡터화 → 모델을 로드(서버 가동 시 1회만) → 예측 → 답안 획득 → 응답 구성
+                // 클라이언트 : 응답을 받아서 → 화면 처리(ajax)
+
+            }
+            function onLangTranslate() {
+                // 번역하기 → 파파고와 연동하여 처리
+            }
+        </script>
+    </body>
+</html>
