@@ -5,12 +5,17 @@ import os
 import re
 import json
 
-# 학습데이터 로드
 # 모든 경로는 entry 포인트를 기준으로 따진다
+
+# 학습데이터 로드
+# 예측 모델
+# 서버가 재가동될 때, 예측 모델을 로드하므로 
+# 이 위치를 최신으로 갱신해준다
 ml_model_file = './ml/clf_lang_20190830.model'
 clf = joblib.load(ml_model_file)
 
 # 정답 로드
+# 레이블
 ml_label_file = './ml/clf_lang_labels.label'
 with open ( ml_label_file, 'r' ) as f :
     clf_label = json.load(f)
