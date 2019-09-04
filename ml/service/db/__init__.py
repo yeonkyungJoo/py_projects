@@ -26,6 +26,31 @@ def selectData(uid) :
             connection.close()
     return result
 
+# 머신러닝 모델 정보 가져오기
+def selectModelInfo() :
+    connection = None
+    result = None
+    try : 
+        connection = pymysql.connect(host = 'localhost',
+                                     user = 'root',
+                                     password = '12341234',
+                                     db = 'python_db',
+                                     charset = 'utf8mb4',
+                                     cursorclass = pymysql.cursors.DictCursor)
+        with connection.cursor() as cursor :
+            sql = '''
+            select dir, label from predict_model_mgr 
+            where ver = (select model_ver from sys_config);
+            '''
+            cursor.execute(sql)
+            result = cursor.fetchone()
+    except Exception as e :
+        print('오류 발생', e)
+    finally :
+        if connection :
+            connection.close()
+    return result
+
 # 번역을 요청한 데이터를 DB에 삽입하는 함수
 def insertData( src, out, slang, olang, uid = 'guest' ) :
     connection = None
