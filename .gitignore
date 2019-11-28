@@ -102,3 +102,19 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+.vscode
+
+chromedriver.exe
+chromedriver_win32.zip
+
+run.bat
+
+지역_*
+
+data/
+korea_font.py
+
+ml-100k
+
+Docker for Windows Installer.exe
